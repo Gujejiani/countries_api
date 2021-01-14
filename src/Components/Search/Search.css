@@ -1,0 +1,19 @@
+.Search {
+  margin-top: 20px;
+  height: 15px;
+  border: 1px solid #04dce4;
+  outline: none;
+  padding: 3px;
+}
+.Search_Parrent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Search_Parrent div {
+  position: relative;
+}
+
+.Search:focus {
+  outline: 1px solid #06e4b4;
+}
