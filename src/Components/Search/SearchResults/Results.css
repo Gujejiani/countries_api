@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-ul {
+.ul {
   list-style: none;
   padding: 0;
   display: flex;
@@ -13,14 +13,8 @@ ul {
   font-size: 15px;
   width: 100%;
 }
-ul li {
-  display: inline-block;
 
-  background-color: #f3f3f3;
-  text-align: left;
-  padding: 3px;
-}
-ul li:hover {
+.ul li:hover {
   background-color: #c7bcbc;
   cursor: pointer;
 }
