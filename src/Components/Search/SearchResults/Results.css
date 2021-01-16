@@ -12,9 +12,5 @@
   position: absolute;
   font-size: 15px;
   width: 100%;
-}
-
-.ul li:hover {
-  background-color: #c7bcbc;
-  cursor: pointer;
+  margin-top: 5px;
 }

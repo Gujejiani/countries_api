@@ -17,3 +17,18 @@
 .Search:focus {
   outline: 1px solid #06e4b4;
 }
+
+.Show {
+  border: 1px solid #f3f4f2;
+  font-size: 14px;
+  margin-left: 10px;
+
+  cursor: pointer;
+  padding: 0 10px;
+}
+.Show:active {
+  outline: 1px solid rgb(8, 167, 167);
+}
+.Show:hover {
+  background-color: rgb(253, 243, 230);
+}

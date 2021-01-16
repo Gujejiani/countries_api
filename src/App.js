@@ -27,7 +27,11 @@ function App() {
       setSearching([]);
     } else {
       if (findedCountries.length > 10) {
+        console.log("tomany");
         setSearching([{ message: "Too many matches, specify another filter" }]);
+      } else if (findedCountries.length < 1) {
+        console.log("les one");
+        setSearching([{ message: "no countries found" }]);
       } else {
         setSearching(findedCountries);
       }
@@ -39,10 +43,11 @@ function App() {
     setSearch(e.target.value);
   };
   const country =
-    searching.length < 2
+    searching.length < 2 && searching[0]?.name
       ? searching.map((country) => {
           return (
             <Country
+              key={country.population + Math.random()}
               name={country.name}
               src={country.flag}
               capital={country.capital}
@@ -52,11 +57,20 @@ function App() {
           );
         })
       : null;
+
+  const showClickedHandler = (name) => {
+    const showCountry = searching.find((c) => c.name === name);
+    setSearching([showCountry]);
+  };
   return (
     <div className="App">
       <div>search: {search}</div>
       <Countries.Provider value={searching}>
-        <Search search={searchingHandler} />
+        <Search
+          countries={searching}
+          search={searchingHandler}
+          ShowClicked={showClickedHandler}
+        />
       </Countries.Provider>
       {country}
     </div>

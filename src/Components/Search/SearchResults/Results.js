@@ -3,18 +3,7 @@ import { useContext } from "react";
 import { Countries } from "../../../Context/CountriesContext/countries";
 const Results = (props) => {
   const countries = useContext(Countries);
-
-  return (
-    <ul className="ul">
-      {countries.map((country) => {
-        return (
-          <li key={country.name + Math.random()}>
-            {country.name} {country.message}
-          </li>
-        );
-      })}
-    </ul>
-  );
+  return <ul className="ul">{props.children}</ul>;
 };
 
 export default Results;
