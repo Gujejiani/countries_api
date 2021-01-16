@@ -1,0 +1,14 @@
+.Wether_container {
+  display: flex;
+  flex-direction: column;
+}
+.Wether_container label {
+  margin-bottom: 20px;
+}
+.Wether_container span {
+  color: #000;
+  font-weight: bold;
+}
+.Wether_container img {
+  border-radius: 100%;
+}

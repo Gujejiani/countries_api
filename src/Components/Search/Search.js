@@ -15,7 +15,7 @@ const Search = (props) => {
         />
         <SearchResults>
           {props.countries.map((country) => {
-            return (
+            return props.hide ? null : (
               <li key={country.name + Math.random()}>
                 {country.name}
                 {country.message ?? (

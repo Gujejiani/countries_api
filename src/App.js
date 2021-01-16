@@ -10,6 +10,28 @@ function App() {
   const [search, setSearch] = useState("");
   const [countries, setCountries] = useState([]);
   const [searching, setSearching] = useState([]);
+  const [wetherInfo, setWetherInfo] = useState(false);
+
+  useEffect(() => {
+    if (searching.length === 1 && searching[0]?.name) {
+      const country = searching[0]?.name;
+      const api_key = process.env.REACT_APP_API_KEY;
+      console.log(api_key);
+      axios
+        .get(
+          `http://api.weatherstack.com/current?access_key=${api_key}&query=${country}`
+        )
+        .then((result) => {
+          setWetherInfo(result.data.current);
+          console.log(result);
+          console.log(wetherInfo);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [searching]);
+
   useEffect(() => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
@@ -53,6 +75,10 @@ function App() {
               capital={country.capital}
               population={country.population}
               language={country.languages}
+              temp={wetherInfo.temperature}
+              wetherSrc={wetherInfo.weather_icons[0]}
+              wind={wetherInfo.wind_speed}
+              dir={wetherInfo.wind_dir}
             />
           );
         })
@@ -67,6 +93,7 @@ function App() {
       <div>search: {search}</div>
       <Countries.Provider value={searching}>
         <Search
+          hide={searching.length === 1 && searching[0]?.name ? true : false}
           countries={searching}
           search={searchingHandler}
           ShowClicked={showClickedHandler}

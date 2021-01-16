@@ -1,5 +1,5 @@
 import "./Country.css";
-
+import Wether from "../Wether/Wether";
 const Country = (props) => {
   return (
     <div className="Country">
@@ -17,6 +17,16 @@ const Country = (props) => {
           : null}
       </ul>
       <img src={props.src} width="200px" />
+      <Wether>
+        <label>
+          <span>Temperature:</span> {props.temp} Celcius
+        </label>
+        <img src={props.wetherSrc} width="50px" />
+        <label>
+          <span>wind: </span>
+          {props.wind} mph direction {props.dir}
+        </label>
+      </Wether>
     </div>
   );
 };
