@@ -13,10 +13,12 @@ function App() {
   const [wetherInfo, setWetherInfo] = useState(false);
 
   useEffect(() => {
+    require("dotenv").config();
+    var api_key = process.env.REACT_APP_API_KEY;
+
     if (searching.length === 1 && searching[0]?.name) {
       const country = searching[0]?.name;
-      const api_key = process.env.REACT_APP_API_KEY;
-      console.log(api_key);
+
       axios
         .get(
           `http://api.weatherstack.com/current?access_key=${api_key}&query=${country}`
