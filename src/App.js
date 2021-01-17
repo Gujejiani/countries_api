@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Countries } from "./Context/CountriesContext/countries";
 import Country from "./Components/CountryDisplay/Country";
-
+import WetherInfo from "./Components/Wether/Wether";
 function App() {
   const [search, setSearch] = useState("");
   const [countries, setCountries] = useState([]);
@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     require("dotenv").config();
     var api_key = process.env.REACT_APP_API_KEY;
-
+    console.log(api_key);
     if (searching.length === 1 && searching[0]?.name) {
       const country = searching[0]?.name;
 
@@ -24,8 +24,9 @@ function App() {
           `http://api.weatherstack.com/current?access_key=${api_key}&query=${country}`
         )
         .then((result) => {
+          console.log(result.data.current);
           setWetherInfo(result.data.current);
-          console.log(result);
+
           console.log(wetherInfo);
         })
         .catch((err) => {
@@ -78,10 +79,15 @@ function App() {
               population={country.population}
               language={country.languages}
               temp={wetherInfo.temperature}
-              wetherSrc={wetherInfo.weather_icons[0]}
-              wind={wetherInfo.wind_speed}
-              dir={wetherInfo.wind_dir}
-            />
+            >
+              {wetherInfo ? (
+                <WetherInfo
+                  wetherSrc={wetherInfo.weather_icons[0]}
+                  wind={wetherInfo.wind_speed}
+                  dir={"Sds"}
+                />
+              ) : null}
+            </Country>
           );
         })
       : null;

@@ -17,16 +17,7 @@ const Country = (props) => {
           : null}
       </ul>
       <img src={props.src} width="200px" />
-      <Wether>
-        <label>
-          <span>Temperature:</span> {props.temp} Celcius
-        </label>
-        <img src={props.wetherSrc} width="50px" />
-        <label>
-          <span>wind: </span>
-          {props.wind} mph direction {props.dir}
-        </label>
-      </Wether>
+      {props.children}
     </div>
   );
 };
