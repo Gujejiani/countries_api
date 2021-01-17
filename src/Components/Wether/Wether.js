@@ -7,7 +7,7 @@ const Wether = (props) => {
       <label>
         <span>Temperature:</span> {props.temp} Celcius
       </label>
-      <img src={props.wetherSrc} width="50px" />
+      <img src={props.wetherSrc} width="50px" alt="wether" />
       <label>
         <span>wind: </span>
         {props.wind} mph direction {props.dir}

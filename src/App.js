@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     require("dotenv").config();
     var api_key = process.env.REACT_APP_API_KEY;
-    console.log(api_key);
+
     if (searching.length === 1 && searching[0]?.name) {
       const country = searching[0]?.name;
 
@@ -26,8 +26,6 @@ function App() {
         .then((result) => {
           console.log(result.data.current);
           setWetherInfo(result.data.current);
-
-          console.log(wetherInfo);
         })
         .catch((err) => {
           console.log(err);
@@ -61,10 +59,9 @@ function App() {
         setSearching(findedCountries);
       }
     }
-  }, [search]);
+  }, [search, countries]);
 
   const searchingHandler = (e) => {
-    console.log(searching);
     setSearch(e.target.value);
   };
   const country =

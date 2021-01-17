@@ -1,5 +1,5 @@
 import "./Country.css";
-import Wether from "../Wether/Wether";
+
 const Country = (props) => {
   return (
     <div className="Country">
@@ -16,7 +16,7 @@ const Country = (props) => {
             })
           : null}
       </ul>
-      <img src={props.src} width="200px" />
+      <img src={props.src} width="200px" alt="flag" />
       {props.children}
     </div>
   );
